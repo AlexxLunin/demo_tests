@@ -13,6 +13,7 @@ public class Text_Box {
     @BeforeAll
     static void before(){
         Configuration.baseUrl = "https://demoqa.com";
+        open();
         WebDriverRunner.getWebDriver().manage().window().maximize();
         Configuration.browser = "chrome";
         Configuration.holdBrowserOpen = true;
@@ -23,9 +24,9 @@ public class Text_Box {
         open("https://demoqa.com/text-box");
         String userName = "Alex";
         $("#userName").setValue(userName);
-        $("#us erEmail").setValue("google@gmail.com");
+        $("#userEmail").setValue("google@gmail.com");
         $("#currentAddress").setValue("USA");
         $("#permanentAddress").setValue("USA + Canada");
-        $(".btn-primary").click();
+        $("#submit").click();
     }
 }
