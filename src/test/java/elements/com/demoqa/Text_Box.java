@@ -1,9 +1,11 @@
-package elements;
+package elements.com.demoqa;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -11,7 +13,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class Text_Box {
 
     @BeforeAll
-    static void before(){
+    public final static void before(){
         Configuration.baseUrl = "https://demoqa.com";
         open();
         WebDriverRunner.getWebDriver().manage().window().maximize();
@@ -21,12 +23,15 @@ public class Text_Box {
 
     @Test
     void FillFormTest() {
-        open("https://demoqa.com/text-box");
+        open("/text-box");
         String userName = "Alex";
+        String userEmail = "google@gmail.com";
+        String Address = "USA + Canada";
+        $(".main-header").shouldHave(text("Text Box"));
         $("#userName").setValue(userName);
-        $("#userEmail").setValue("google@gmail.com");
-        $("#currentAddress").setValue("USA");
-        $("#permanentAddress").setValue("USA + Canada");
-        $("#submit").click();
+        $("#userEmail").setValue(userEmail);
+        $("#currentAddress").setValue(Address);
+        $("#permanentAddress").setValue(Address);
+        $(".btn-primary").click();
     }
 }
